@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+{% block body %}
+  <div id="content" class="page">
+    <header>
+        <h1>YSOCIAL</h1>
+        <nav>
+            <menu>
+                <menuitem><a href="{{ url_for('events.index') }}"><button type="button">Home</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events.get_events') }}"><button type="button">Events</button></a></menuitem>
+            </menu>
+        </nav>
+    </header>
+    <div class="main">
+      <div class="register">
+          <h2>Register</h2>
+        <form method="POST">
+          
+            <div>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" required>
+            </div>
+
+            <div>
+                <label for="password_confirmation">Password Confirmation</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" required>
+            </div>
+           
+            <input type="submit" value="Sign Up">
+        </form>
+      {% if error %}
+      <p style="color: tomato;">{{ error }}</p>
+      {% endif %}     
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer writing">Joy is social!</p>
+    </div>
+  </div>
+  {% endblock %}

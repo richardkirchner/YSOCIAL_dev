@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+  <html lang="en">
+<head>
+  {% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  {% endblock %}
+</head>
+</head>
+<body>
+  <div id="content" class="page">
+    <header>
+        <h1>YSOCIAL</h1>
+        <nav>
+            <menu>
+                
+                <menuitem><a href="{{ url_for('events.get_events') }}"><button type="button">Events</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events.register') }}"><button type="button">Register</button></a></menuitem>
+            </menu>
+        </nav>
+    </header>
+    <div class="main">
+      <div class="register">
+          <h2></h2>
+        
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer writing">Joy is social!</p>
+    </div>
+  </div>
+</body>

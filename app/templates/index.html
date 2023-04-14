@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <div id="content" class="page">
+    <header>
+        <h1>YSOCIAL</h1>
+        <nav>
+            <menu>
+                <menuitem><a href="{{ url_for('events.get_events') }}"><button type="button">Events</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events.register') }}"><button type="button">Register your event</button></a></menuitem>
+            </menu>
+        </nav>
+    </header>
+    <div class="main">
+      <div class="register">
+          <h2>Start to explore your area and connect with people</h2>
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer writing">Joy is social!</p>
+    </div>
+  </div>
+</body>
