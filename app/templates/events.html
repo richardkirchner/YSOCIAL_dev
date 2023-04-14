@@ -9,18 +9,30 @@
         <nav>
             <menu>
                 
-                <menuitem><a href="{{ url_for('events.index') }}"><button type="button">Home</button></a></menuitem>
-                <menuitem><a href="{{ url_for('events.register') }}"><button type="button">Register</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events/.index') }}"><button type="button">Home</button></a></menuitem>
+                {% if current_user.is_authenticated %}
+                
+                  <menuitem><a href="{{ url_for('user.logout') }}"><button type="button">Logout</button></a></menuitem>
+                  <small>
+                    Logged in as {{ current_user.email }}
+                  </small>
+                {% else %}
+                  <menuitem><a href="{{ url_for('user.get_login') }}"><button type="button">Login</button></a></menuitem>
+                {% endif %}
             </menu>
         </nav>
     </header>
     <div class="main">
       <div class="register">
       <form method="POST">
-        {% for event in events %}
+        {% for event in events_pagination.items %}
         <div><p>{{event.name}}</p></div>
         <div><p>{{event.date}}</p></div>
         <div><p>{{event.desc}}</p></div>
+        <button onclick="delete(self)">delete</button>
+        <button onclick="">edit</button>
+        <!-- <event_button type="button">delete</event_button>
+        <a href="{{ url_for('events.get_events') }}"><event_button type="button">edit</event_button></a> -->
         <!-- <li>
           <label for="event_{{ event.id }}">{{event.desc}}</label>
           <label for="event_{{ event.name }}">{{event.name}}</label>
@@ -44,19 +56,23 @@
         </li>
         {%endfor%}
            -->
-          <p>
-            {% if events_pagination.prev_num %}
-            <a href="{{url_for('events.events',page=events_pagination.pref_num) }}">Next Page</a>
-            {%else%}
-            <span> Previuos Page </span>
-            {% endif %}
-            <span> - </span>
-            {% if events_pagination.next_num %}
-              <a href="{{ url_for('events.events', page=events_pagination.next_num) }}">Next Page</a>
-            {% else%}
-              <span>Next Page</span>
-            {% endif %}
-          </p>
+          <nav>
+            <p>
+              {% if events_pagination.prev_num %}
+              <a href="{{url_for('events.events', page=events_pagination.pref_num) }}">Previous Page</a>
+              {%else%}
+                <small>
+                  <span>Previous Page</span>
+                {% endif %}
+                  <span> - </span>
+                {% if events_pagination.next_num %}
+                  <a href="{{ url_for('events.events', page=events_pagination.next_num) }}">Next Page</a>
+                {% else%}
+                  <span>Next Page</span>
+                </small>
+              {% endif %}
+            </p>
+          </nav>
       </form>
       </div>
       <p><a href="{{ url_for('events.register') }}"><button type="button">Register your event</button></a></p>

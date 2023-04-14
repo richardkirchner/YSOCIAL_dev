@@ -18,6 +18,28 @@ button{
     outline: none;
     cursor: pointer;
 }
+button{
+    color:#fff;
+    margin: 25px 20px;
+    padding: 10px 20px;
+    background:transparent;
+    border: 2
+    px solid #000000;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+h3{
+    margin: 25px 20px;
+    padding: 10px 20px;
+    background:transparent;
+    border: 2
+    px solid #000000;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
 
 .page{
     width: 100%;
@@ -45,6 +67,7 @@ h1{
 
 nav{
     font-size: 1.6rem;
+    color: #fff;
     margin: 0 3rem 0 0;
 }
 

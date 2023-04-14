@@ -8,8 +8,16 @@
         <h1>YSOCIAL</h1>
         <nav>
             <menu>
-                <menuitem><a href="{{ url_for('events.get_events') }}"><button type="button">Events</button></a></menuitem>
-                <menuitem><a href="{{ url_for('events.register') }}"><button type="button">Register your event</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events/.get_events') }}"><button type="button">Events</button></a></menuitem>
+                {% if current_user.is_authenticated %}
+                
+                  <menuitem><a href="{{ url_for('user.logout') }}"><button type="button">Logout</button></a></menuitem>
+                  <small>
+                    Logged in as {{ current_user.email }}
+                  </small>
+                {% else %}
+                  <menuitem><a href="{{ url_for('user.get_login') }}"><button type="button">Login</button></a></menuitem>
+                {% endif %}
             </menu>
         </nav>
     </header>
