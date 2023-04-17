@@ -43,7 +43,7 @@ def post_login():
     elif not check_password_hash(user.password, request.form.get('password')):
       raise Exception('The password does not appear to be correct.')
     login_user(user)
-    return redirect(url_for('events.get_events'))
+    return redirect(url_for('events/.get_events'))
   except Exception as error_message:
     error = error_message or 'An error occured while logging in. Please verify your email and password'
     return render_template('login.html', error=error)

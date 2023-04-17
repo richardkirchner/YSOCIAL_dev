@@ -28,7 +28,7 @@ def post_events():
     db.session.add(new_event)
     db.session.commit()
     print("new event is saved", new_event)
-    return redirect(url_for('events.get_events'))
+    return redirect(url_for('events/.get_events'))
   return render_template('register.html')
 
 # @blueprint.route('/edit_event', methods=('GET','POST'))
@@ -44,7 +44,7 @@ def post_events():
 #     db.session.add(new_event)
 #     db.session.commit()
 #     print("new event is saved", new_event)
-#     return redirect(url_for('events.get_events'))
+#     return redirect(url_for('events/.get_events'))
 #   return render_template('edit_event.html')
 
 @blueprint.route('/')
