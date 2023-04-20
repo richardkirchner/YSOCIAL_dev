@@ -23,8 +23,7 @@ button{
     margin: 25px 20px;
     padding: 10px 20px;
     background:transparent;
-    border: 2
-    px solid #000000;
+    border: 2px solid #fff;
     border-radius: 20px;
     outline: none;
     cursor: pointer;
@@ -73,6 +72,11 @@ nav{
     margin: 0 3rem 0 0;
 }
 
+a{
+    color: #fff;
+}
+
+
 menuitem{ 
 margin: 0 0 0 0.5rem;
 }
@@ -80,8 +84,6 @@ margin: 0 0 0 0.5rem;
 .main{
     grid-area: main;
     display: flex;
-    height: 100%;
-    justify-content: center;
 }
 
 .register{
@@ -121,6 +123,15 @@ p{
     width:100%;
     height:auto;
 }
+.eventclass{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 10px;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: start;
+}
 
 @media screen and(max-width=600px){
     h1{
@@ -142,4 +153,75 @@ p{
         font-size: 30px;
         padding: 25px 15px;
     }
+}
+
+.slider{
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides{
+    width:500%;
+    height:500px;
+    display: flex;
+}
+
+.slides input{
+    display:none;
+}
+
+.slide{
+    width:20%;
+    transition:2s;
+}
+
+.slide img{
+    height:500px;
+    width: 800px;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+
+.navigation-auto{
+    position: absolute;
+    display:flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+}
+.navigation-auto div{
+    border: 2px solid #ff6e48;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #ff6e48;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #ff6e48;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #ff6e48;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #ff6e48;
 }

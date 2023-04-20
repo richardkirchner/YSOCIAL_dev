@@ -8,7 +8,7 @@
         <h1>YSOCIAL</h1>
         <nav>
             <menu>
-                <menuitem><a href="{{ url_for('events.index') }}"><button type="button">Home</button></a></menuitem>
+                <menuitem><a href="{{ url_for('events/.index') }}"><button type="button">Home</button></a></menuitem>
                 <menuitem><a href="{{ url_for('events/.get_events') }}"><button type="button">Events</button></a></menuitem>
             </menu>
         </nav>
@@ -16,23 +16,23 @@
     <div class="main">
       <div class="register">
           <h2>Edit your event</h2>
-        <form method="POST">
+        <form method="POST" action="/edit_event/{{event.id}}">
           <p>
             <div>
               <label for="event"></label>
-              <input type="text" name="event" id="event" placeholder="your event name">
+              <input type="text" name="event" id="event" placeholder="your event name" value="{{event.name}}">
             </div>
           </p>
           <p>
             <div>
               <label for="event_date"></label>
-              <input type="integer" name="event_date" id="event_date"  placeholder="dd.mm.yyyy">
+              <input type="integer" name="event_date" id="event_date"  placeholder="dd.mm.yyyy" >
             </div>
           </p>
           <p>
             <div>
               <label for="event_discription"></label>
-              <input type="text" name="event_discription" id="event_discription" placeholder="your event discription">
+              <input type="text" name="event_discription" id="event_discription" placeholder="your event discription" value="{{event.desc}}">
             </div>
           </p>
           <p>

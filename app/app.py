@@ -1,8 +1,6 @@
 from flask import Flask, Blueprint
 from app.extensions.database import db, migrate
 from app.extensions.authentication import login_manager
-# from app.events.models import event
-# from app.users.models import users
 from . import events, api, users
 
 from app.events.routes import blueprint as events_blueprint
