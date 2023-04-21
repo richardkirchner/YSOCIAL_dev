@@ -9,7 +9,15 @@
         <nav>
             <menu>
                 <menuitem><a href="{{ url_for('events/.index') }}"><button type="button">Home</button></a></menuitem>
+                {% if current_user.is_authenticated %}
+
+                <menuitem><a href="{{ url_for('user.logout') }}">
+                  <button type="button">Logout</button></a>
+                </menuitem>
+                <small> Logged in as {{ current_user.email }} </small>
+                {% else %}
                 <menuitem><a href="{{ url_for('events/.get_events') }}"><button type="button">Events</button></a></menuitem>
+                {% endif %}
             </menu>
         </nav>
     </header>

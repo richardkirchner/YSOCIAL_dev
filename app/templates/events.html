@@ -6,74 +6,69 @@
   />
 </head>
 <body>
-  <div id="content" class="page">
-    <header>
-      <h1>YSOCIAL</h1>
-      <nav>
-        <menu>
-          <menuitem><a href="{{ url_for('events/.index') }}">
-            <button type="button">Home</button></a>
-          </menuitem>
-          {% if current_user.is_authenticated %}
+  <header>
+    <h1>YSOCIAL</h1>
+    <nav>
+      <menu>
+        <menuitem><a href="{{ url_for('events/.index') }}">
+          <button type="button">Home</button></a>
+        </menuitem>
+        {% if current_user.is_authenticated %}
 
-          <menuitem><a href="{{ url_for('user.logout') }}">
-            <button type="button">Logout</button></a>
-          </menuitem>
-          <small> Logged in as {{ current_user.email }} </small>
-          {% else %}
-          <menuitem><a href="{{ url_for('user.get_login') }}">
-            <button type="button">Login</button></a>
-          </menuitem>
-          {% endif %}
-        </menu>
-      </nav>
-    </header>
-    <div class="">
-      <div class="eventclass">
+        <menuitem><a href="{{ url_for('user.logout') }}">
+          <button type="button">Logout</button></a>
+        </menuitem>
+        <small> Logged in as {{ current_user.email }} </small>
+        {% else %}
+        <menuitem><a href="{{ url_for('user.get_login') }}">
+          <button type="button">Login</button></a>
+        </menuitem>
+        {% endif %}
+      </menu>
+    </nav>
+  </header>
+  <div class="main">
+    <div class="eventclass">
+      
+      {% for event in events_pagination.items %}
         
-        {% for event in events_pagination.items %}
-          <div>
-            <p>{{event.name}}</p>
-            <p>{{event.date}}</p>
-            <p>{{event.desc}}</p>
-          </div>
+        <p>{{event.name}}
+           {{event.date}}
+           {{event.desc}}
           <form method="POST" action="/register/delete">
             <input type="hidden" name="event_id" id="event_id" value="{{event.id}}">
             <button type="submit" value="submit">delete</button>
           </form>
           <button><a href="/edit_event/{{event.id}}" class="">edit</a></button>
-        {%endfor%}
-      </div>
-        <nav>
-          <p>
-            {% if events_pagination.prev_num %}
-            <a href="{{url_for('events.events', page=events_pagination.pref_num) }}"
-              >Previous Page</a
-            >
-            {%else%}
-            <small>
-              <span>Previous Page</span>
-              {% endif %}
-              <span> - </span>
-              {% if events_pagination.next_num %}
-              <a
-                href="{{ url_for('events.events', page=events_pagination.next_num) }}"
-                >Next Page</a
-              >
-              {% else%}
-              <span>Next Page</span>
-            </small>
+        </p>
+      {%endfor%}
+    
+      <!-- <nav>
+        <p>
+          {% if events_pagination.prev_num %}
+          <a href="{{url_for('events.events', page=events_pagination.pref_num) }}"
+            >Previous Page</a
+          >
+          {%else%}
+          <small>
+            <span>Previous Page</span>
             {% endif %}
-          </p>
-        </nav>
+            <span> - </span>
+            {% if events_pagination.next_num %}
+            <a
+              href="{{ url_for('events.events', page=events_pagination.next_num) }}"
+              >Next Page</a
+            >
+            {% else%}
+            <span>Next Page</span>
+          </small>
+          {% endif %}
+        </p>
+      </nav> -->
       <p>
-        <a href="{{ url_for('events/.post_events') }}"
-          ><button type="button">Register your event</button></a
-        >
-      </p>
-    </div>
-    <div class="footer">
-      <p class="footer writing">Joy is social!</p>
+        <a href="{{ url_for('events/.post_events') }}"><button type="button">Register your event</button></a>
+     </p>
     </div>
   </div>
+  
 </body>

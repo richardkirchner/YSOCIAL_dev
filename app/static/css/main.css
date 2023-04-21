@@ -123,7 +123,7 @@ p{
     width:100%;
     height:auto;
 }
-.eventclass{
+/* .eventclass{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(150px, auto);
@@ -131,6 +131,23 @@ p{
     max-width: 960px;
     margin: 0 auto;
     align-items: start;
+} */
+
+.eventclass {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-top: 4%;
+    
+}
+  
+.eventclass p {
+width: 33.33%;
+}
+  
+.eventclass form,
+.eventclass button {
+display: inline-block;
 }
 
 @media screen and(max-width=600px){
@@ -160,6 +177,7 @@ p{
     height: 500px;
     border-radius: 10px;
     overflow: hidden;
+    margin-top: 15%;
 }
 
 .slides{
